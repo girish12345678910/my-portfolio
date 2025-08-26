@@ -708,6 +708,67 @@
     </style>
 </head>
 <body>
+
+ <!-- Cat Animation Start -->
+<style>
+.cat-cursor {
+  position: fixed;
+  width: 48px;
+  height: 35px;
+  left: 100px;
+  top: 100px;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s;
+  user-select: none;
+  background-image: url('halloween-cat-8bit-pixel-art-png-removebg-preview.png'); /* Using cat emoji as fallback */
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+<div id="cat-cursor" class="cat-cursor"></div>
+
+<script>
+const cat = document.getElementById('cat-cursor');
+let catX = 100, catY = 100;
+
+function moveCat(x, y) {
+  catX += (x - catX) * 0.17;
+  catY += (y - catY) * 0.17;
+  cat.style.left = catX + 'px';
+  cat.style.top = catY + 'px';
+
+  // Flip the cat emoji based on movement direction
+  if (x > catX) {
+    cat.style.transform = 'scaleX(1)';
+  } else {
+    cat.style.transform = 'scaleX(-1)';
+  }
+}
+
+// Let the cat chase the mouse
+document.addEventListener('mousemove', (e) => {
+  moveCat(e.clientX - 24, e.clientY - 24);
+});
+
+// Optional: Animate cat to clicked position
+document.addEventListener('click', (e) => {
+  catX = e.clientX - 24;
+  catY = e.clientY - 24;
+  cat.style.left = catX + 'px';
+  cat.style.top = catY + 'px';
+});
+</script>
+<!-- Cat Animation End -->
+
+
+
+
+
     <div class="container">
         <!-- Header -->
         <header class="header">
