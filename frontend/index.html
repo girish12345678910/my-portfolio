@@ -813,7 +813,10 @@
     <!-- Footer -->
     <footer class="footer">
         © 2025 by Girish
+        <span id="visit-count">Total visits: ...</span>
     </footer>
+    
+
 
     <!-- Enhanced Theme Toggle -->
     <div class="theme-toggle" id="themeToggle">
@@ -869,5 +872,18 @@
         themeToggle.setAttribute('role', 'button');
         themeToggle.setAttribute('aria-label', 'Toggle theme');
     </script>
+    <script>
+fetch('https://api.countapi.xyz/hit/my-portfolio-2025/')
+  .then(response => response.json())
+  .then(data => {
+      document.getElementById('visit-count').innerText =
+          'Total visits: ' + data.value;
+  })
+  .catch(() => {
+      document.getElementById('visit-count').innerText =
+          'Visitors: N/A';
+  });
+</script>
+
 </body>
 </html>
